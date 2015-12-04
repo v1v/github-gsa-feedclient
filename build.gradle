@@ -18,24 +18,24 @@ dependencies {
     compile "org.slf4j:slf4j-simple:1.7.12"
     compile "org.apache.httpcomponents:httpclient:4.3.6"
     compile "org.apache.httpcomponents:httpmime:4.3.6"
-	compile "org.json:json:20140107"
-	compile "commons-io:commons-io:2.4"    
+    compile "org.json:json:20140107"
+    compile "commons-io:commons-io:2.4"
 }
 
-// It creates a JAR file with proper manifest 
+// It creates a JAR file with proper manifest
 jar () {
-	manifest {
-        attributes 'Implementation-Title': project.description,  
-        	'Implementation-Version': version,
-        	'Main-Class': mainClassName
+    manifest {
+        attributes 'Implementation-Title': project.description,
+                   'Implementation-Version': version,
+                   'Main-Class': mainClassName
     }
 }
 
 // Task to RUN accepting Application arguments (appArgs)
 run () {
     classpath = sourceSets.main.runtimeClasspath
-	main = mainClassName
-	if ( project.hasProperty("appArgs") ) {
-		args Eval.me(appArgs)
-	}
+    main = mainClassName
+    if ( project.hasProperty("appArgs") ) {
+        args Eval.me(appArgs)
+    }
 }
